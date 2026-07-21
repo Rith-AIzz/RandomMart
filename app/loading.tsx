@@ -1,0 +1,1 @@
+export default function Loading(){return <main><section className="section"><div className="container"><p className="eyebrow">Loading RandomMart</p><div className="product-grid" style={{marginTop:30}}>{Array.from({length:4},(_,i)=><div key={i} className="product-card" style={{height:440,background:"#efe3d4",opacity:.65}} />)}</div></div></section></main>}

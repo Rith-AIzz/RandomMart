@@ -1,0 +1,3 @@
+import { expect, test } from "@playwright/test";
+test("visitor can browse and add a product", async ({page}) => { await page.goto("/"); await expect(page.getByRole("heading",{name:/Everything you need/i})).toBeVisible(); await page.getByRole("link",{name:"Shop now"}).click(); await expect(page.getByRole("heading",{name:/Find your next good thing/i})).toBeVisible(); await page.getByRole("button",{name:"Add"}).first().click(); await expect(page.getByRole("status")).toContainText("added"); });
+test("admin dashboard clearly uses demo data", async ({page}) => { await page.goto("/admin"); await expect(page.getByRole("heading",{name:"Store overview"})).toBeVisible(); await expect(page.getByText("Demo data")).toBeVisible(); });
