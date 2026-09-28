@@ -23,6 +23,9 @@ type StoreContextValue = {
   orders: DemoOrder[];
   user: DemoUser | null;
   notice: string | null;
+  wishlist: string[];
+  isWishlisted: (productId: string) => boolean;
+  toggleWishlist: (productId: string) => void;
   addItem: (productId: string, quantity?: number) => void;
   setQuantity: (productId: string, quantity: number) => void;
   removeItem: (productId: string) => void;
@@ -39,6 +42,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [orders, setOrders] = useState<DemoOrder[]>([]);
   const [user, setUser] = useState<DemoUser | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [wishlist, setWishlist] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -47,6 +51,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         setCart(JSON.parse(localStorage.getItem("randommart-cart") ?? "[]"));
         setOrders(JSON.parse(localStorage.getItem("randommart-orders") ?? "[]"));
         setUser(JSON.parse(localStorage.getItem("randommart-user") ?? "null"));
+        setWishlist(JSON.parse(localStorage.getItem("randommart-wishlist") ?? "[]"));
       } catch {
         localStorage.removeItem("randommart-cart");
       }
@@ -61,6 +66,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (hydrated) localStorage.setItem("randommart-orders", JSON.stringify(orders));
   }, [orders, hydrated]);
+  useEffect(() => {
+    if (hydrated) localStorage.setItem("randommart-wishlist", JSON.stringify(wishlist));
+  }, [wishlist, hydrated]);
   useEffect(() => {
     if (!hydrated) return;
     if (user) localStorage.setItem("randommart-user", JSON.stringify(user));
@@ -88,6 +96,14 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     if (!product) return;
     if (quantity < 1) return removeItem(productId);
     setCart((current) => current.map((line) => line.productId === productId ? { ...line, quantity: Math.min(product.stock, Math.floor(quantity)) } : line));
+  };
+
+  const isWishlisted = (productId: string) => wishlist.includes(productId);
+  const toggleWishlist = (productId: string) => {
+    const product = productById(productId);
+    if (!product) return;
+    setWishlist((current) => current.includes(productId) ? current.filter((id) => id !== productId) : [...current, productId]);
+    showNotice(wishlist.includes(productId) ? `${product.name} removed from your wishlist.` : `${product.name} saved to your wishlist.`);
   };
 
   const removeItem = (productId: string) => setCart((current) => current.filter((line) => line.productId !== productId));
@@ -125,7 +141,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     return order;
   };
 
-  const value = { cart, cartCount: cart.reduce((sum, line) => sum + line.quantity, 0), totals, orders, user, notice, addItem, setQuantity, removeItem, clearCart, signIn, signOut, placeOrder };
+  const value = { cart, cartCount: cart.reduce((sum, line) => sum + line.quantity, 0), totals, orders, user, notice, wishlist, isWishlisted, toggleWishlist, addItem, setQuantity, removeItem, clearCart, signIn, signOut, placeOrder };
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }

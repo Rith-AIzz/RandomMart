@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { categoryName, formatMoney, type Product } from "../lib/products";
 import { effectivePrice } from "../lib/commerce";
 import { AddToCart } from "./add-to-cart";
+import { WishlistButton } from "./wishlist-button";
 
 export function ProductCard({ product }: { product: Product }) {
   const onSale = product.discountCents !== undefined;
@@ -10,6 +11,7 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="product-card">
       <Link href={`/products/${product.slug}`} className="product-image-link" aria-label={`View ${product.name}`}>
         <img src={product.image} alt="Warm editorial product arrangement" className="product-image" style={{ objectPosition: product.imagePosition }} />
+        <WishlistButton productId={product.id} productName={product.name} />
         <div className="product-badges">
           {onSale && <span className="badge badge-sale">Save {formatMoney(product.priceCents - effectivePrice(product))}</span>}
           {product.stock === 0 ? <span className="badge badge-dark">Out of stock</span> : product.stock <= 8 ? <span className="badge badge-warm">Only {product.stock} left</span> : null}
