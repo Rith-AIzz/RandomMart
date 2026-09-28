@@ -44,6 +44,7 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    optimizeDeps: { exclude: ["lucide-react"] },
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],

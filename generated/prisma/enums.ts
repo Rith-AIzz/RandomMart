@@ -11,6 +11,8 @@
 
 export const UserRole = {
   CUSTOMER: 'CUSTOMER',
+  SUPPORT: 'SUPPORT',
+  MANAGER: 'MANAGER',
   ADMIN: 'ADMIN'
 } as const
 
@@ -41,7 +43,8 @@ export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
 
 export const PaymentMethod = {
   CASH_ON_DELIVERY: 'CASH_ON_DELIVERY',
-  DEMO_CARD: 'DEMO_CARD'
+  TEST_CARD: 'TEST_CARD',
+  STRIPE: 'STRIPE'
 } as const
 
 export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]

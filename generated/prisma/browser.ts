@@ -38,6 +38,26 @@ export type Category = Prisma.CategoryModel
  */
 export type Product = Prisma.ProductModel
 /**
+ * Model WishlistItem
+ * 
+ */
+export type WishlistItem = Prisma.WishlistItemModel
+/**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel
+/**
+ * Model ProductVariant
+ * 
+ */
+export type ProductVariant = Prisma.ProductVariantModel
+/**
+ * Model InventoryMovement
+ * 
+ */
+export type InventoryMovement = Prisma.InventoryMovementModel
+/**
  * Model ProductImage
  * 
  */
@@ -68,7 +88,22 @@ export type OrderItem = Prisma.OrderItemModel
  */
 export type PaymentRecord = Prisma.PaymentRecordModel
 /**
+ * Model StripeEvent
+ * 
+ */
+export type StripeEvent = Prisma.StripeEventModel
+/**
  * Model AuditLog
  * 
  */
 export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model SavedReport
+ * 
+ */
+export type SavedReport = Prisma.SavedReportModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

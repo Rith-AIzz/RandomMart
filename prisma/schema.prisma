@@ -9,6 +9,8 @@ datasource db {
 
 enum UserRole {
   CUSTOMER
+  SUPPORT
+  MANAGER
   ADMIN
 }
 
@@ -30,7 +32,8 @@ enum PaymentStatus {
 
 enum PaymentMethod {
   CASH_ON_DELIVERY
-  DEMO_CARD
+  TEST_CARD
+  STRIPE
 }
 
 model Profile {
@@ -45,6 +48,10 @@ model Profile {
   carts       Cart[]
   orders      Order[]
   auditLogs   AuditLog[]
+  savedReports SavedReport[]
+  notifications Notification[]
+  wishlistItems WishlistItem[]
+  reviews       Review[]
   @@map("profiles")
 }
 
@@ -89,6 +96,7 @@ model Product {
   shortDescription String         @map("short_description") @db.VarChar(240)
   description      String         @db.Text
   priceCents       Int            @map("price_cents")
+  costCents        Int            @default(0) @map("cost_cents")
   discountCents    Int?           @map("discount_cents")
   sku              String         @unique @db.VarChar(60)
   stockQuantity    Int            @default(0) @map("stock_quantity")
@@ -100,9 +108,69 @@ model Product {
   images           ProductImage[]
   cartItems        CartItem[]
   orderItems       OrderItem[]
+  wishlistItems    WishlistItem[]
+  reviews          Review[]
+  variants         ProductVariant[]
+  inventoryMovements InventoryMovement[]
   @@index([categoryId])
   @@index([isActive, createdAt])
   @@map("products")
+}
+
+model WishlistItem {
+  profileId String   @map("profile_id") @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@id([profileId, productId])
+  @@index([profileId, createdAt])
+  @@map("wishlist_items")
+}
+
+model Review {
+  id         String   @id @default(uuid()) @db.Uuid
+  profileId  String   @map("profile_id") @db.Uuid
+  productId  String   @map("product_id") @db.Uuid
+  rating     Int
+  title      String?  @db.VarChar(120)
+  body       String   @db.VarChar(2000)
+  isApproved Boolean  @default(false) @map("is_approved")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@unique([profileId, productId])
+  @@index([productId, isApproved, createdAt])
+  @@map("reviews")
+}
+
+model ProductVariant {
+  id            String   @id @default(uuid()) @db.Uuid
+  productId     String   @map("product_id") @db.Uuid
+  name          String   @db.VarChar(120)
+  sku           String   @unique @db.VarChar(60)
+  attributes    Json
+  priceCents    Int?     @map("price_cents")
+  stockQuantity Int      @default(0) @map("stock_quantity")
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@index([productId, isActive])
+  @@map("product_variants")
+}
+
+model InventoryMovement {
+  id            String   @id @default(uuid()) @db.Uuid
+  productId     String   @map("product_id") @db.Uuid
+  quantityDelta Int      @map("quantity_delta")
+  reason        String   @db.VarChar(80)
+  reference     String?  @db.VarChar(120)
+  createdAt     DateTime @default(now()) @map("created_at")
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@index([productId, createdAt])
+  @@map("inventory_movements")
 }
 
 model ProductImage {
@@ -145,22 +213,30 @@ model CartItem {
 }
 
 model Order {
-  id                 String        @id @default(uuid()) @db.Uuid
-  profileId          String        @map("profile_id") @db.Uuid
-  orderNumber        String        @unique @map("order_number") @db.VarChar(40)
-  idempotencyKey     String        @unique @map("idempotency_key") @db.VarChar(100)
-  status             OrderStatus   @default(PENDING)
-  subtotalCents      Int           @map("subtotal_cents")
-  discountCents      Int           @map("discount_cents")
-  shippingCents      Int           @map("shipping_cents")
-  totalCents         Int           @map("total_cents")
-  shippingName       String        @map("shipping_name") @db.VarChar(120)
-  shippingAddress    Json          @map("shipping_address")
-  createdAt          DateTime      @default(now()) @map("created_at")
-  updatedAt          DateTime      @updatedAt @map("updated_at")
-  profile            Profile       @relation(fields: [profileId], references: [id], onDelete: Restrict)
-  items              OrderItem[]
-  payments           PaymentRecord[]
+  id                    String        @id @default(uuid()) @db.Uuid
+  profileId             String?       @map("profile_id") @db.Uuid
+  guestEmail            String?       @map("guest_email") @db.VarChar(254)
+  guestAccessToken      String?       @unique @map("guest_access_token") @db.VarChar(100)
+  orderNumber           String        @unique @map("order_number") @db.VarChar(40)
+  idempotencyKey        String        @unique @map("idempotency_key") @db.VarChar(100)
+  stripeSessionId       String?       @unique @map("stripe_session_id") @db.VarChar(120)
+  stripePaymentIntentId String?       @map("stripe_payment_intent_id") @db.VarChar(120)
+  status                OrderStatus   @default(PENDING)
+  subtotalCents         Int           @map("subtotal_cents")
+  discountCents         Int           @map("discount_cents")
+  shippingCents         Int           @map("shipping_cents")
+  taxCents              Int           @default(0) @map("tax_cents")
+  refundedCents         Int           @default(0) @map("refunded_cents")
+  totalCents            Int           @map("total_cents")
+  cancellationReason    String?       @map("cancellation_reason") @db.VarChar(500)
+  cancelledAt           DateTime?     @map("cancelled_at")
+  shippingName          String        @map("shipping_name") @db.VarChar(120)
+  shippingAddress       Json          @map("shipping_address")
+  createdAt             DateTime      @default(now()) @map("created_at")
+  updatedAt             DateTime      @updatedAt @map("updated_at")
+  profile               Profile?      @relation(fields: [profileId], references: [id], onDelete: Restrict)
+  items                 OrderItem[]
+  payments              PaymentRecord[]
   @@index([profileId, createdAt])
   @@index([status, createdAt])
   @@map("orders")
@@ -174,8 +250,10 @@ model OrderItem {
   productSku      String   @map("product_sku") @db.VarChar(60)
   productImage    String?  @map("product_image") @db.VarChar(500)
   unitPriceCents  Int      @map("unit_price_cents")
+  unitCostCents   Int      @default(0) @map("unit_cost_cents")
   quantity        Int
   lineTotalCents  Int      @map("line_total_cents")
+  lineCostCents   Int      @default(0) @map("line_cost_cents")
   order           Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   product         Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
   @@index([orderId])
@@ -183,16 +261,29 @@ model OrderItem {
 }
 
 model PaymentRecord {
-  id            String        @id @default(uuid()) @db.Uuid
-  orderId       String        @map("order_id") @db.Uuid
-  method        PaymentMethod
-  status        PaymentStatus
-  amountCents   Int           @map("amount_cents")
-  demoReference String?       @map("demo_reference") @db.VarChar(100)
-  createdAt     DateTime      @default(now()) @map("created_at")
-  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  id                    String        @id @default(uuid()) @db.Uuid
+  orderId               String        @map("order_id") @db.Uuid
+  method                PaymentMethod
+  status                PaymentStatus
+  amountCents           Int           @map("amount_cents")
+  testReference         String?       @map("test_reference") @db.VarChar(100)
+  stripePaymentIntentId String?       @map("stripe_payment_intent_id") @db.VarChar(120)
+  createdAt             DateTime      @default(now()) @map("created_at")
+  order                 Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
   @@index([orderId])
   @@map("payment_records")
+}
+
+model StripeEvent {
+  id            String   @id @default(uuid()) @db.Uuid
+  stripeEventId String   @unique @map("stripe_event_id") @db.VarChar(120)
+  eventType     String   @map("event_type") @db.VarChar(100)
+  processedAt   DateTime @default(now()) @map("processed_at")
+  status        String   @default("PROCESSED") @db.VarChar(30)
+  error         String?  @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+  @@index([stripeEventId])
+  @@map("stripe_events")
 }
 
 model AuditLog {
@@ -207,4 +298,31 @@ model AuditLog {
   @@index([actorId, createdAt])
   @@index([entityType, entityId])
   @@map("audit_logs")
+}
+
+model SavedReport {
+  id        String   @id @default(uuid()) @db.Uuid
+  profileId String   @map("profile_id") @db.Uuid
+  name      String   @db.VarChar(80)
+  filters   Json
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  @@unique([profileId, name])
+  @@index([profileId, updatedAt])
+  @@map("saved_reports")
+}
+
+model Notification {
+  id        String    @id @default(uuid()) @db.Uuid
+  profileId String    @map("profile_id") @db.Uuid
+  kind      String    @db.VarChar(50)
+  title     String    @db.VarChar(140)
+  message   String    @db.VarChar(500)
+  href      String?   @db.VarChar(500)
+  readAt    DateTime? @map("read_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  profile   Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  @@index([profileId, readAt, createdAt])
+  @@map("notifications")
 }

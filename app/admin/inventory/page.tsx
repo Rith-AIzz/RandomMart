@@ -1,3 +1,42 @@
+import { AdminInventoryManager } from "../../../components/admin-inventory-manager";
 import { AdminShell } from "../../../components/admin-shell";
-import { categoryName, products } from "../../../lib/products";
-export default function InventoryPage(){const sorted=[...products].sort((a,b)=>a.stock-b.stock);return <AdminShell><div className="admin-title"><div><p className="eyebrow">Stock monitoring</p><h1>Inventory</h1></div><span className="status">{products.filter(p=>p.stock<=8).length} need attention</span></div><div className="admin-card"><div className="table-scroll"><table className="data-table"><thead><tr><th>Product</th><th>Category</th><th>SKU</th><th>On hand</th><th>Level</th></tr></thead><tbody>{sorted.map(p=><tr key={p.id}><td><b>{p.name}</b></td><td>{categoryName(p.category)}</td><td>{p.sku}</td><td>{p.stock}</td><td><span className="status">{p.stock===0?"Out of stock":p.stock<=8?"Low stock":"Healthy"}</span></td></tr>)}</tbody></table></div></div></AdminShell>}
+import { prisma } from "../../../lib/prisma/client";
+import { isLiveMode } from "../../../lib/runtime-config";
+import {
+  categoryName,
+  products as sampleProducts,
+} from "../../../lib/products";
+import { requirePermission } from "../../../services/authorization.service";
+
+export default async function InventoryPage() {
+  const liveMode = isLiveMode();
+  if (liveMode) await requirePermission("catalog.manage");
+  const rows = liveMode
+    ? await prisma.product.findMany({
+        include: { category: true },
+        orderBy: { stockQuantity: "asc" },
+      })
+    : [];
+  const products = liveMode
+    ? rows.map((row) => ({
+        id: row.id,
+        name: row.name,
+        category: row.category.name,
+        sku: row.sku,
+        stock: row.stockQuantity,
+      }))
+    : [...sampleProducts]
+        .sort((a, b) => a.stock - b.stock)
+        .map((row) => ({
+          id: row.id,
+          name: row.name,
+          category: categoryName(row.category),
+          sku: row.sku,
+          stock: row.stock,
+        }));
+  return (
+    <AdminShell>
+      <AdminInventoryManager products={products} liveMode={liveMode} />
+    </AdminShell>
+  );
+}

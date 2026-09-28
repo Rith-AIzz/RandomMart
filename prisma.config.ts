@@ -4,5 +4,10 @@ import { defineConfig, env } from "prisma/config";
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: { path: "prisma/migrations", seed: "tsx prisma/seed.ts" },
-  datasource: { url: env("DIRECT_URL") },
+  datasource: {
+    url:
+      process.env.DIRECT_URL ||
+      process.env.DATABASE_URL ||
+      "postgresql://postgres:postgres@localhost:5432/randommart?schema=public",
+  },
 });

@@ -28,14 +28,18 @@ export type AggregateOrderItem = {
 
 export type OrderItemAvgAggregateOutputType = {
   unitPriceCents: number | null
+  unitCostCents: number | null
   quantity: number | null
   lineTotalCents: number | null
+  lineCostCents: number | null
 }
 
 export type OrderItemSumAggregateOutputType = {
   unitPriceCents: number | null
+  unitCostCents: number | null
   quantity: number | null
   lineTotalCents: number | null
+  lineCostCents: number | null
 }
 
 export type OrderItemMinAggregateOutputType = {
@@ -46,8 +50,10 @@ export type OrderItemMinAggregateOutputType = {
   productSku: string | null
   productImage: string | null
   unitPriceCents: number | null
+  unitCostCents: number | null
   quantity: number | null
   lineTotalCents: number | null
+  lineCostCents: number | null
 }
 
 export type OrderItemMaxAggregateOutputType = {
@@ -58,8 +64,10 @@ export type OrderItemMaxAggregateOutputType = {
   productSku: string | null
   productImage: string | null
   unitPriceCents: number | null
+  unitCostCents: number | null
   quantity: number | null
   lineTotalCents: number | null
+  lineCostCents: number | null
 }
 
 export type OrderItemCountAggregateOutputType = {
@@ -70,22 +78,28 @@ export type OrderItemCountAggregateOutputType = {
   productSku: number
   productImage: number
   unitPriceCents: number
+  unitCostCents: number
   quantity: number
   lineTotalCents: number
+  lineCostCents: number
   _all: number
 }
 
 
 export type OrderItemAvgAggregateInputType = {
   unitPriceCents?: true
+  unitCostCents?: true
   quantity?: true
   lineTotalCents?: true
+  lineCostCents?: true
 }
 
 export type OrderItemSumAggregateInputType = {
   unitPriceCents?: true
+  unitCostCents?: true
   quantity?: true
   lineTotalCents?: true
+  lineCostCents?: true
 }
 
 export type OrderItemMinAggregateInputType = {
@@ -96,8 +110,10 @@ export type OrderItemMinAggregateInputType = {
   productSku?: true
   productImage?: true
   unitPriceCents?: true
+  unitCostCents?: true
   quantity?: true
   lineTotalCents?: true
+  lineCostCents?: true
 }
 
 export type OrderItemMaxAggregateInputType = {
@@ -108,8 +124,10 @@ export type OrderItemMaxAggregateInputType = {
   productSku?: true
   productImage?: true
   unitPriceCents?: true
+  unitCostCents?: true
   quantity?: true
   lineTotalCents?: true
+  lineCostCents?: true
 }
 
 export type OrderItemCountAggregateInputType = {
@@ -120,8 +138,10 @@ export type OrderItemCountAggregateInputType = {
   productSku?: true
   productImage?: true
   unitPriceCents?: true
+  unitCostCents?: true
   quantity?: true
   lineTotalCents?: true
+  lineCostCents?: true
   _all?: true
 }
 
@@ -219,8 +239,10 @@ export type OrderItemGroupByOutputType = {
   productSku: string
   productImage: string | null
   unitPriceCents: number
+  unitCostCents: number
   quantity: number
   lineTotalCents: number
+  lineCostCents: number
   _count: OrderItemCountAggregateOutputType | null
   _avg: OrderItemAvgAggregateOutputType | null
   _sum: OrderItemSumAggregateOutputType | null
@@ -254,8 +276,10 @@ export type OrderItemWhereInput = {
   productSku?: Prisma.StringFilter<"OrderItem"> | string
   productImage?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   unitPriceCents?: Prisma.IntFilter<"OrderItem"> | number
+  unitCostCents?: Prisma.IntFilter<"OrderItem"> | number
   quantity?: Prisma.IntFilter<"OrderItem"> | number
   lineTotalCents?: Prisma.IntFilter<"OrderItem"> | number
+  lineCostCents?: Prisma.IntFilter<"OrderItem"> | number
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
   product?: Prisma.XOR<Prisma.ProductNullableScalarRelationFilter, Prisma.ProductWhereInput> | null
 }
@@ -268,8 +292,10 @@ export type OrderItemOrderByWithRelationInput = {
   productSku?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
   order?: Prisma.OrderOrderByWithRelationInput
   product?: Prisma.ProductOrderByWithRelationInput
 }
@@ -285,8 +311,10 @@ export type OrderItemWhereUniqueInput = Prisma.AtLeast<{
   productSku?: Prisma.StringFilter<"OrderItem"> | string
   productImage?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   unitPriceCents?: Prisma.IntFilter<"OrderItem"> | number
+  unitCostCents?: Prisma.IntFilter<"OrderItem"> | number
   quantity?: Prisma.IntFilter<"OrderItem"> | number
   lineTotalCents?: Prisma.IntFilter<"OrderItem"> | number
+  lineCostCents?: Prisma.IntFilter<"OrderItem"> | number
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
   product?: Prisma.XOR<Prisma.ProductNullableScalarRelationFilter, Prisma.ProductWhereInput> | null
 }, "id">
@@ -299,8 +327,10 @@ export type OrderItemOrderByWithAggregationInput = {
   productSku?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
   _count?: Prisma.OrderItemCountOrderByAggregateInput
   _avg?: Prisma.OrderItemAvgOrderByAggregateInput
   _max?: Prisma.OrderItemMaxOrderByAggregateInput
@@ -319,8 +349,10 @@ export type OrderItemScalarWhereWithAggregatesInput = {
   productSku?: Prisma.StringWithAggregatesFilter<"OrderItem"> | string
   productImage?: Prisma.StringNullableWithAggregatesFilter<"OrderItem"> | string | null
   unitPriceCents?: Prisma.IntWithAggregatesFilter<"OrderItem"> | number
+  unitCostCents?: Prisma.IntWithAggregatesFilter<"OrderItem"> | number
   quantity?: Prisma.IntWithAggregatesFilter<"OrderItem"> | number
   lineTotalCents?: Prisma.IntWithAggregatesFilter<"OrderItem"> | number
+  lineCostCents?: Prisma.IntWithAggregatesFilter<"OrderItem"> | number
 }
 
 export type OrderItemCreateInput = {
@@ -329,8 +361,10 @@ export type OrderItemCreateInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
   order: Prisma.OrderCreateNestedOneWithoutItemsInput
   product?: Prisma.ProductCreateNestedOneWithoutOrderItemsInput
 }
@@ -343,8 +377,10 @@ export type OrderItemUncheckedCreateInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemUpdateInput = {
@@ -353,8 +389,10 @@ export type OrderItemUpdateInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   order?: Prisma.OrderUpdateOneRequiredWithoutItemsNestedInput
   product?: Prisma.ProductUpdateOneWithoutOrderItemsNestedInput
 }
@@ -367,8 +405,10 @@ export type OrderItemUncheckedUpdateInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemCreateManyInput = {
@@ -379,8 +419,10 @@ export type OrderItemCreateManyInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemUpdateManyMutationInput = {
@@ -389,8 +431,10 @@ export type OrderItemUpdateManyMutationInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemUncheckedUpdateManyInput = {
@@ -401,8 +445,10 @@ export type OrderItemUncheckedUpdateManyInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemListRelationFilter = {
@@ -423,14 +469,18 @@ export type OrderItemCountOrderByAggregateInput = {
   productSku?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
 }
 
 export type OrderItemAvgOrderByAggregateInput = {
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
 }
 
 export type OrderItemMaxOrderByAggregateInput = {
@@ -441,8 +491,10 @@ export type OrderItemMaxOrderByAggregateInput = {
   productSku?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
 }
 
 export type OrderItemMinOrderByAggregateInput = {
@@ -453,14 +505,18 @@ export type OrderItemMinOrderByAggregateInput = {
   productSku?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
 }
 
 export type OrderItemSumOrderByAggregateInput = {
   unitPriceCents?: Prisma.SortOrder
+  unitCostCents?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   lineTotalCents?: Prisma.SortOrder
+  lineCostCents?: Prisma.SortOrder
 }
 
 export type OrderItemCreateNestedManyWithoutProductInput = {
@@ -553,8 +609,10 @@ export type OrderItemCreateWithoutProductInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
   order: Prisma.OrderCreateNestedOneWithoutItemsInput
 }
 
@@ -565,8 +623,10 @@ export type OrderItemUncheckedCreateWithoutProductInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemCreateOrConnectWithoutProductInput = {
@@ -606,8 +666,10 @@ export type OrderItemScalarWhereInput = {
   productSku?: Prisma.StringFilter<"OrderItem"> | string
   productImage?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   unitPriceCents?: Prisma.IntFilter<"OrderItem"> | number
+  unitCostCents?: Prisma.IntFilter<"OrderItem"> | number
   quantity?: Prisma.IntFilter<"OrderItem"> | number
   lineTotalCents?: Prisma.IntFilter<"OrderItem"> | number
+  lineCostCents?: Prisma.IntFilter<"OrderItem"> | number
 }
 
 export type OrderItemCreateWithoutOrderInput = {
@@ -616,8 +678,10 @@ export type OrderItemCreateWithoutOrderInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
   product?: Prisma.ProductCreateNestedOneWithoutOrderItemsInput
 }
 
@@ -628,8 +692,10 @@ export type OrderItemUncheckedCreateWithoutOrderInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemCreateOrConnectWithoutOrderInput = {
@@ -665,8 +731,10 @@ export type OrderItemCreateManyProductInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemUpdateWithoutProductInput = {
@@ -675,8 +743,10 @@ export type OrderItemUpdateWithoutProductInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   order?: Prisma.OrderUpdateOneRequiredWithoutItemsNestedInput
 }
 
@@ -687,8 +757,10 @@ export type OrderItemUncheckedUpdateWithoutProductInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemUncheckedUpdateManyWithoutProductInput = {
@@ -698,8 +770,10 @@ export type OrderItemUncheckedUpdateManyWithoutProductInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemCreateManyOrderInput = {
@@ -709,8 +783,10 @@ export type OrderItemCreateManyOrderInput = {
   productSku: string
   productImage?: string | null
   unitPriceCents: number
+  unitCostCents?: number
   quantity: number
   lineTotalCents: number
+  lineCostCents?: number
 }
 
 export type OrderItemUpdateWithoutOrderInput = {
@@ -719,8 +795,10 @@ export type OrderItemUpdateWithoutOrderInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   product?: Prisma.ProductUpdateOneWithoutOrderItemsNestedInput
 }
 
@@ -731,8 +809,10 @@ export type OrderItemUncheckedUpdateWithoutOrderInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type OrderItemUncheckedUpdateManyWithoutOrderInput = {
@@ -742,8 +822,10 @@ export type OrderItemUncheckedUpdateManyWithoutOrderInput = {
   productSku?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   unitPriceCents?: Prisma.IntFieldUpdateOperationsInput | number
+  unitCostCents?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   lineTotalCents?: Prisma.IntFieldUpdateOperationsInput | number
+  lineCostCents?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -756,8 +838,10 @@ export type OrderItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   productSku?: boolean
   productImage?: boolean
   unitPriceCents?: boolean
+  unitCostCents?: boolean
   quantity?: boolean
   lineTotalCents?: boolean
+  lineCostCents?: boolean
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   product?: boolean | Prisma.OrderItem$productArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
@@ -770,8 +854,10 @@ export type OrderItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   productSku?: boolean
   productImage?: boolean
   unitPriceCents?: boolean
+  unitCostCents?: boolean
   quantity?: boolean
   lineTotalCents?: boolean
+  lineCostCents?: boolean
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   product?: boolean | Prisma.OrderItem$productArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
@@ -784,8 +870,10 @@ export type OrderItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   productSku?: boolean
   productImage?: boolean
   unitPriceCents?: boolean
+  unitCostCents?: boolean
   quantity?: boolean
   lineTotalCents?: boolean
+  lineCostCents?: boolean
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   product?: boolean | Prisma.OrderItem$productArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
@@ -798,11 +886,13 @@ export type OrderItemSelectScalar = {
   productSku?: boolean
   productImage?: boolean
   unitPriceCents?: boolean
+  unitCostCents?: boolean
   quantity?: boolean
   lineTotalCents?: boolean
+  lineCostCents?: boolean
 }
 
-export type OrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderId" | "productId" | "productName" | "productSku" | "productImage" | "unitPriceCents" | "quantity" | "lineTotalCents", ExtArgs["result"]["orderItem"]>
+export type OrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderId" | "productId" | "productName" | "productSku" | "productImage" | "unitPriceCents" | "unitCostCents" | "quantity" | "lineTotalCents" | "lineCostCents", ExtArgs["result"]["orderItem"]>
 export type OrderItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
   product?: boolean | Prisma.OrderItem$productArgs<ExtArgs>
@@ -830,8 +920,10 @@ export type $OrderItemPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     productSku: string
     productImage: string | null
     unitPriceCents: number
+    unitCostCents: number
     quantity: number
     lineTotalCents: number
+    lineCostCents: number
   }, ExtArgs["result"]["orderItem"]>
   composites: {}
 }
@@ -1264,8 +1356,10 @@ export interface OrderItemFieldRefs {
   readonly productSku: Prisma.FieldRef<"OrderItem", 'String'>
   readonly productImage: Prisma.FieldRef<"OrderItem", 'String'>
   readonly unitPriceCents: Prisma.FieldRef<"OrderItem", 'Int'>
+  readonly unitCostCents: Prisma.FieldRef<"OrderItem", 'Int'>
   readonly quantity: Prisma.FieldRef<"OrderItem", 'Int'>
   readonly lineTotalCents: Prisma.FieldRef<"OrderItem", 'Int'>
+  readonly lineCostCents: Prisma.FieldRef<"OrderItem", 'Int'>
 }
     
 

@@ -202,6 +202,10 @@ export type ProfileWhereInput = {
   carts?: Prisma.CartListRelationFilter
   orders?: Prisma.OrderListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  savedReports?: Prisma.SavedReportListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  wishlistItems?: Prisma.WishlistItemListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -216,6 +220,10 @@ export type ProfileOrderByWithRelationInput = {
   carts?: Prisma.CartOrderByRelationAggregateInput
   orders?: Prisma.OrderOrderByRelationAggregateInput
   auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  savedReports?: Prisma.SavedReportOrderByRelationAggregateInput
+  notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  wishlistItems?: Prisma.WishlistItemOrderByRelationAggregateInput
+  reviews?: Prisma.ReviewOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -233,6 +241,10 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   carts?: Prisma.CartListRelationFilter
   orders?: Prisma.OrderListRelationFilter
   auditLogs?: Prisma.AuditLogListRelationFilter
+  savedReports?: Prisma.SavedReportListRelationFilter
+  notifications?: Prisma.NotificationListRelationFilter
+  wishlistItems?: Prisma.WishlistItemListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
 }, "id" | "email">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -273,6 +285,10 @@ export type ProfileCreateInput = {
   carts?: Prisma.CartCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -287,6 +303,10 @@ export type ProfileUncheckedCreateInput = {
   carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -301,6 +321,10 @@ export type ProfileUpdateInput = {
   carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -315,6 +339,10 @@ export type ProfileUncheckedUpdateInput = {
   carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -417,6 +445,34 @@ export type ProfileUpdateOneRequiredWithoutAddressesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutAddressesInput, Prisma.ProfileUpdateWithoutAddressesInput>, Prisma.ProfileUncheckedUpdateWithoutAddressesInput>
 }
 
+export type ProfileCreateNestedOneWithoutWishlistItemsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutWishlistItemsInput, Prisma.ProfileUncheckedCreateWithoutWishlistItemsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutWishlistItemsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutWishlistItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutWishlistItemsInput, Prisma.ProfileUncheckedCreateWithoutWishlistItemsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutWishlistItemsInput
+  upsert?: Prisma.ProfileUpsertWithoutWishlistItemsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutWishlistItemsInput, Prisma.ProfileUpdateWithoutWishlistItemsInput>, Prisma.ProfileUncheckedUpdateWithoutWishlistItemsInput>
+}
+
+export type ProfileCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutReviewsInput, Prisma.ProfileUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutReviewsInput, Prisma.ProfileUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.ProfileUpsertWithoutReviewsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutReviewsInput, Prisma.ProfileUpdateWithoutReviewsInput>, Prisma.ProfileUncheckedUpdateWithoutReviewsInput>
+}
+
 export type ProfileCreateNestedOneWithoutCartsInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutCartsInput, Prisma.ProfileUncheckedCreateWithoutCartsInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutCartsInput
@@ -437,10 +493,12 @@ export type ProfileCreateNestedOneWithoutOrdersInput = {
   connect?: Prisma.ProfileWhereUniqueInput
 }
 
-export type ProfileUpdateOneRequiredWithoutOrdersNestedInput = {
+export type ProfileUpdateOneWithoutOrdersNestedInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutOrdersInput, Prisma.ProfileUncheckedCreateWithoutOrdersInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutOrdersInput
   upsert?: Prisma.ProfileUpsertWithoutOrdersInput
+  disconnect?: Prisma.ProfileWhereInput | boolean
+  delete?: Prisma.ProfileWhereInput | boolean
   connect?: Prisma.ProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutOrdersInput, Prisma.ProfileUpdateWithoutOrdersInput>, Prisma.ProfileUncheckedUpdateWithoutOrdersInput>
 }
@@ -461,6 +519,34 @@ export type ProfileUpdateOneWithoutAuditLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.ProfileUpdateWithoutAuditLogsInput>, Prisma.ProfileUncheckedUpdateWithoutAuditLogsInput>
 }
 
+export type ProfileCreateNestedOneWithoutSavedReportsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSavedReportsInput, Prisma.ProfileUncheckedCreateWithoutSavedReportsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSavedReportsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutSavedReportsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSavedReportsInput, Prisma.ProfileUncheckedCreateWithoutSavedReportsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSavedReportsInput
+  upsert?: Prisma.ProfileUpsertWithoutSavedReportsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSavedReportsInput, Prisma.ProfileUpdateWithoutSavedReportsInput>, Prisma.ProfileUncheckedUpdateWithoutSavedReportsInput>
+}
+
+export type ProfileCreateNestedOneWithoutNotificationsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutNotificationsInput, Prisma.ProfileUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutNotificationsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutNotificationsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutNotificationsInput, Prisma.ProfileUncheckedCreateWithoutNotificationsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutNotificationsInput
+  upsert?: Prisma.ProfileUpsertWithoutNotificationsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutNotificationsInput, Prisma.ProfileUpdateWithoutNotificationsInput>, Prisma.ProfileUncheckedUpdateWithoutNotificationsInput>
+}
+
 export type ProfileCreateWithoutAddressesInput = {
   id: string
   email: string
@@ -472,6 +558,10 @@ export type ProfileCreateWithoutAddressesInput = {
   carts?: Prisma.CartCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutAddressesInput = {
@@ -485,6 +575,10 @@ export type ProfileUncheckedCreateWithoutAddressesInput = {
   carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutAddressesInput = {
@@ -514,6 +608,10 @@ export type ProfileUpdateWithoutAddressesInput = {
   carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutAddressesInput = {
@@ -527,6 +625,178 @@ export type ProfileUncheckedUpdateWithoutAddressesInput = {
   carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutWishlistItemsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutWishlistItemsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutWishlistItemsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutWishlistItemsInput, Prisma.ProfileUncheckedCreateWithoutWishlistItemsInput>
+}
+
+export type ProfileUpsertWithoutWishlistItemsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutWishlistItemsInput, Prisma.ProfileUncheckedUpdateWithoutWishlistItemsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutWishlistItemsInput, Prisma.ProfileUncheckedCreateWithoutWishlistItemsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutWishlistItemsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutWishlistItemsInput, Prisma.ProfileUncheckedUpdateWithoutWishlistItemsInput>
+}
+
+export type ProfileUpdateWithoutWishlistItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutWishlistItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutReviewsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutReviewsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutReviewsInput, Prisma.ProfileUncheckedCreateWithoutReviewsInput>
+}
+
+export type ProfileUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutReviewsInput, Prisma.ProfileUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutReviewsInput, Prisma.ProfileUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutReviewsInput, Prisma.ProfileUncheckedUpdateWithoutReviewsInput>
+}
+
+export type ProfileUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCartsInput = {
@@ -540,6 +810,10 @@ export type ProfileCreateWithoutCartsInput = {
   addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCartsInput = {
@@ -553,6 +827,10 @@ export type ProfileUncheckedCreateWithoutCartsInput = {
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCartsInput = {
@@ -582,6 +860,10 @@ export type ProfileUpdateWithoutCartsInput = {
   addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCartsInput = {
@@ -595,6 +877,10 @@ export type ProfileUncheckedUpdateWithoutCartsInput = {
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutOrdersInput = {
@@ -608,6 +894,10 @@ export type ProfileCreateWithoutOrdersInput = {
   addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
   carts?: Prisma.CartCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutOrdersInput = {
@@ -621,6 +911,10 @@ export type ProfileUncheckedCreateWithoutOrdersInput = {
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
   carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
   auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutOrdersInput = {
@@ -650,6 +944,10 @@ export type ProfileUpdateWithoutOrdersInput = {
   addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
   carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutOrdersInput = {
@@ -663,6 +961,10 @@ export type ProfileUncheckedUpdateWithoutOrdersInput = {
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
   carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
   auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutAuditLogsInput = {
@@ -676,6 +978,10 @@ export type ProfileCreateWithoutAuditLogsInput = {
   addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
   carts?: Prisma.CartCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutAuditLogsInput = {
@@ -689,6 +995,10 @@ export type ProfileUncheckedCreateWithoutAuditLogsInput = {
   addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
   carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutAuditLogsInput = {
@@ -718,6 +1028,10 @@ export type ProfileUpdateWithoutAuditLogsInput = {
   addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
   carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutAuditLogsInput = {
@@ -731,6 +1045,178 @@ export type ProfileUncheckedUpdateWithoutAuditLogsInput = {
   addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
   carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutSavedReportsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutSavedReportsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutSavedReportsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSavedReportsInput, Prisma.ProfileUncheckedCreateWithoutSavedReportsInput>
+}
+
+export type ProfileUpsertWithoutSavedReportsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutSavedReportsInput, Prisma.ProfileUncheckedUpdateWithoutSavedReportsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSavedReportsInput, Prisma.ProfileUncheckedCreateWithoutSavedReportsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutSavedReportsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutSavedReportsInput, Prisma.ProfileUncheckedUpdateWithoutSavedReportsInput>
+}
+
+export type ProfileUpdateWithoutSavedReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutSavedReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutNotificationsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutNotificationsInput = {
+  id: string
+  email: string
+  fullName: string
+  phone?: string | null
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  addresses?: Prisma.AddressUncheckedCreateNestedManyWithoutProfileInput
+  carts?: Prisma.CartUncheckedCreateNestedManyWithoutProfileInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutProfileInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutActorInput
+  savedReports?: Prisma.SavedReportUncheckedCreateNestedManyWithoutProfileInput
+  wishlistItems?: Prisma.WishlistItemUncheckedCreateNestedManyWithoutProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutNotificationsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutNotificationsInput, Prisma.ProfileUncheckedCreateWithoutNotificationsInput>
+}
+
+export type ProfileUpsertWithoutNotificationsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutNotificationsInput, Prisma.ProfileUncheckedUpdateWithoutNotificationsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutNotificationsInput, Prisma.ProfileUncheckedCreateWithoutNotificationsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutNotificationsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutNotificationsInput, Prisma.ProfileUncheckedUpdateWithoutNotificationsInput>
+}
+
+export type ProfileUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutNotificationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  addresses?: Prisma.AddressUncheckedUpdateManyWithoutProfileNestedInput
+  carts?: Prisma.CartUncheckedUpdateManyWithoutProfileNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutProfileNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutActorNestedInput
+  savedReports?: Prisma.SavedReportUncheckedUpdateManyWithoutProfileNestedInput
+  wishlistItems?: Prisma.WishlistItemUncheckedUpdateManyWithoutProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 
@@ -743,6 +1229,10 @@ export type ProfileCountOutputType = {
   carts: number
   orders: number
   auditLogs: number
+  savedReports: number
+  notifications: number
+  wishlistItems: number
+  reviews: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -750,6 +1240,10 @@ export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   carts?: boolean | ProfileCountOutputTypeCountCartsArgs
   orders?: boolean | ProfileCountOutputTypeCountOrdersArgs
   auditLogs?: boolean | ProfileCountOutputTypeCountAuditLogsArgs
+  savedReports?: boolean | ProfileCountOutputTypeCountSavedReportsArgs
+  notifications?: boolean | ProfileCountOutputTypeCountNotificationsArgs
+  wishlistItems?: boolean | ProfileCountOutputTypeCountWishlistItemsArgs
+  reviews?: boolean | ProfileCountOutputTypeCountReviewsArgs
 }
 
 /**
@@ -790,6 +1284,34 @@ export type ProfileCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.AuditLogWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountSavedReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedReportWhereInput
+}
+
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificationWhereInput
+}
+
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountWishlistItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WishlistItemWhereInput
+}
+
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -803,6 +1325,10 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   carts?: boolean | Prisma.Profile$cartsArgs<ExtArgs>
   orders?: boolean | Prisma.Profile$ordersArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Profile$auditLogsArgs<ExtArgs>
+  savedReports?: boolean | Prisma.Profile$savedReportsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Profile$notificationsArgs<ExtArgs>
+  wishlistItems?: boolean | Prisma.Profile$wishlistItemsArgs<ExtArgs>
+  reviews?: boolean | Prisma.Profile$reviewsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -842,6 +1368,10 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   carts?: boolean | Prisma.Profile$cartsArgs<ExtArgs>
   orders?: boolean | Prisma.Profile$ordersArgs<ExtArgs>
   auditLogs?: boolean | Prisma.Profile$auditLogsArgs<ExtArgs>
+  savedReports?: boolean | Prisma.Profile$savedReportsArgs<ExtArgs>
+  notifications?: boolean | Prisma.Profile$notificationsArgs<ExtArgs>
+  wishlistItems?: boolean | Prisma.Profile$wishlistItemsArgs<ExtArgs>
+  reviews?: boolean | Prisma.Profile$reviewsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -854,6 +1384,10 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     carts: Prisma.$CartPayload<ExtArgs>[]
     orders: Prisma.$OrderPayload<ExtArgs>[]
     auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    savedReports: Prisma.$SavedReportPayload<ExtArgs>[]
+    notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    wishlistItems: Prisma.$WishlistItemPayload<ExtArgs>[]
+    reviews: Prisma.$ReviewPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1261,6 +1795,10 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   carts<T extends Prisma.Profile$cartsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$cartsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   orders<T extends Prisma.Profile$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   auditLogs<T extends Prisma.Profile$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedReports<T extends Prisma.Profile$savedReportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$savedReportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notifications<T extends Prisma.Profile$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  wishlistItems<T extends Prisma.Profile$wishlistItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$wishlistItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.Profile$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1783,6 +2321,102 @@ export type Profile$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Profile.savedReports
+ */
+export type Profile$savedReportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedReport
+   */
+  select?: Prisma.SavedReportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedReport
+   */
+  omit?: Prisma.SavedReportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedReportInclude<ExtArgs> | null
+  where?: Prisma.SavedReportWhereInput
+  orderBy?: Prisma.SavedReportOrderByWithRelationInput | Prisma.SavedReportOrderByWithRelationInput[]
+  cursor?: Prisma.SavedReportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedReportScalarFieldEnum | Prisma.SavedReportScalarFieldEnum[]
+}
+
+/**
+ * Profile.notifications
+ */
+export type Profile$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notification
+   */
+  select?: Prisma.NotificationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notification
+   */
+  omit?: Prisma.NotificationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificationInclude<ExtArgs> | null
+  where?: Prisma.NotificationWhereInput
+  orderBy?: Prisma.NotificationOrderByWithRelationInput | Prisma.NotificationOrderByWithRelationInput[]
+  cursor?: Prisma.NotificationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * Profile.wishlistItems
+ */
+export type Profile$wishlistItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WishlistItem
+   */
+  select?: Prisma.WishlistItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WishlistItem
+   */
+  omit?: Prisma.WishlistItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WishlistItemInclude<ExtArgs> | null
+  where?: Prisma.WishlistItemWhereInput
+  orderBy?: Prisma.WishlistItemOrderByWithRelationInput | Prisma.WishlistItemOrderByWithRelationInput[]
+  cursor?: Prisma.WishlistItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WishlistItemScalarFieldEnum | Prisma.WishlistItemScalarFieldEnum[]
+}
+
+/**
+ * Profile.reviews
+ */
+export type Profile$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Review
+   */
+  select?: Prisma.ReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Review
+   */
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReviewInclude<ExtArgs> | null
+  where?: Prisma.ReviewWhereInput
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
 }
 
 /**
