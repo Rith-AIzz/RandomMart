@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useStore } from "./store-provider";
+import { useCurrency } from "./currency-provider";
 
 const links = [
   ["/products", "Shop"],
@@ -15,6 +16,7 @@ const links = [
 
 export function SiteHeader() {
   const { cartCount, user } = useStore();
+  const { currency, setCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const router = useRouter();
@@ -41,6 +43,7 @@ export function SiteHeader() {
           <input id="site-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" />
         </form>
         <div className="header-actions">
+          <label className="sr-only" htmlFor="currency-select">Currency</label><select id="currency-select" aria-label="Display currency" value={currency} onChange={(event) => setCurrency(event.target.value as "USD" | "KHR")}><option value="USD">USD $</option><option value="KHR">KHR ៛</option></select>
           <Link href={user ? "/profile" : "/login"} className="header-action" aria-label={user ? `Account for ${user.name}` : "Sign in"}><UserRound aria-hidden="true" /><span>{user ? user.name.split(" ")[0] : "Account"}</span></Link>
           <Link href="/cart" className="header-action cart-link" aria-label={`Cart with ${cartCount} items`}><ShoppingBag aria-hidden="true" /><span>Cart</span>{cartCount > 0 && <b>{cartCount}</b>}</Link>
           <button type="button" className="mobile-menu-button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-nav"><span className="sr-only">Toggle menu</span>{open ? <X /> : <Menu />}</button>
