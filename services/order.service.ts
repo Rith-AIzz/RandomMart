@@ -17,6 +17,7 @@ export async function createOrderForUser(profileId: string, untrustedInput: unkn
     ]);
     if (!cart?.items.length) throw new Error("CART_EMPTY");
     if (!address) throw new Error("ADDRESS_NOT_FOUND");
+    if (input.demoOutcome === "DECLINED") throw new Error("PAYMENT_DECLINED");
     for (const item of cart.items) {
       if (!item.product.isActive || item.quantity < 1) throw new Error("PRODUCT_UNAVAILABLE");
       const updated = await tx.product.updateMany({ where: { id: item.productId, isActive: true, stockQuantity: { gte: item.quantity } }, data: { stockQuantity: { decrement: item.quantity } } });
@@ -31,7 +32,7 @@ export async function createOrderForUser(profileId: string, untrustedInput: unkn
       subtotalCents: totals.subtotalCents, discountCents: totals.discountCents, shippingCents: totals.shippingCents, totalCents: totals.totalCents,
       shippingName: address.recipient, shippingAddress: { line1: address.line1, line2: address.line2, city: address.city, region: address.region, postalCode: address.postalCode, country: address.country },
       items: { create: cart.items.map((item) => ({ productId: item.productId, productName: item.product.name, productSku: item.product.sku, productImage: item.product.images[0]?.path, unitPriceCents: item.product.discountCents ?? item.product.priceCents, quantity: item.quantity, lineTotalCents: (item.product.discountCents ?? item.product.priceCents) * item.quantity })) },
-      payments: { create: { method: input.paymentMethod as PaymentMethod, status: input.demoOutcome === "DECLINED" ? PaymentStatus.DECLINED : PaymentStatus.APPROVED, amountCents: totals.totalCents, demoReference: `DEMO-${input.idempotencyKey.slice(0, 8)}` } },
+      payments: { create: { method: input.paymentMethod as PaymentMethod, status: PaymentStatus.APPROVED, amountCents: totals.totalCents, demoReference: `DEMO-${input.idempotencyKey.slice(0, 8)}` } },
     }, include: { items: true, payments: true } });
     await tx.cartItem.deleteMany({ where: { cartId: cart.id } });
     return order;
