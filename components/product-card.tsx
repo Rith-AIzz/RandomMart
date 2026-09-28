@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
-import { categoryName, formatMoney, type Product } from "../lib/products";
+import { categoryName, type Product } from "../lib/products";
 import { effectivePrice } from "../lib/commerce";
 import { AddToCart } from "./add-to-cart";
 import { CurrencyPrice } from "./currency-price";
