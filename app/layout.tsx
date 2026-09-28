@@ -5,6 +5,7 @@ import { StoreProvider } from "../components/store-provider";
 import { SiteHeader } from "../components/site-header";
 import { SiteFooter } from "../components/site-footer";
 import { Notice } from "../components/notice";
+import { CurrencyProvider } from "../components/currency-provider";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,12 +39,14 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${fraunces.variable}`}
       >
-        <StoreProvider>
+        <CurrencyProvider>
+          <StoreProvider>
           <SiteHeader />
           {children}
           <SiteFooter />
           <Notice />
         </StoreProvider>
+        </CurrencyProvider>
       </body>
     </html>
   );
