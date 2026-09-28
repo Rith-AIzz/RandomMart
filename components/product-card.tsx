@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { categoryName, formatMoney, type Product } from "../lib/products";
 import { effectivePrice } from "../lib/commerce";
 import { AddToCart } from "./add-to-cart";
